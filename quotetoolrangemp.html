@@ -13,20 +13,28 @@
         .step {
             display: none;
         }
-        .step img {
+        .option {
             width: 150px;
             height: 150px;
             margin: 10px;
+            padding: 20px;
+            display: inline-block;
+            text-align: center;
             cursor: pointer;
             border: 2px solid transparent;
+            background-color: #f0f0f0;
         }
-        .step img.selected {
+        .option.selected {
             border-color: #4CAF50;
+            background-color: #e0ffe0;
+        }
+        .buttons {
+            margin-top: 20px;
         }
         button {
             width: 100px;
             padding: 10px;
-            margin-top: 20px;
+            margin: 5px;
             background-color: #4CAF50;
             color: white;
             border: none;
@@ -47,69 +55,81 @@
 
     <div id="step1" class="step" style="display: block;">
         <h2>Step 1: Select Pool Model</h2>
-        <div>
-            <img src="https://resources.plungie.com/hubfs/Rectangle%20159.png" alt="Arena" onclick="selectOption('poolModel', 'Arena', 1)">
-            <img src="https://resources.plungie.com/hubfs/Rectangle%20159-1.png" alt="Studio" onclick="selectOption('poolModel', 'Studio', 1)">
-            <img src="https://resources.plungie.com/hubfs/Rectangle%20159-2.png" alt="Original" onclick="selectOption('poolModel', 'Original', 1)">
-            <img src="https://resources.plungie.com/hubfs/Rectangle%20159-3.png" alt="Max" onclick="selectOption('poolModel', 'Max', 1)">
+        <div class="options">
+            <div class="option" onclick="selectOption('poolModel', 'Arena', 1)">Arena</div>
+            <div class="option" onclick="selectOption('poolModel', 'Studio', 1)">Studio</div>
+            <div class="option" onclick="selectOption('poolModel', 'Original', 1)">Original</div>
+            <div class="option" onclick="selectOption('poolModel', 'Max', 1)">Max</div>
         </div>
-        <button onclick="nextStep(1)">Next</button>
+        <div class="buttons">
+            <button onclick="nextStep(1)">Next</button>
+        </div>
     </div>
 
     <div id="step2" class="step">
         <h2>Step 2: Select Equipment Package</h2>
-        <div>
-            <img src="smart.jpg" alt="Smart" onclick="selectOption('equipmentPackage', 'Smart', 2)">
-            <img src="salt.jpg" alt="Salt" onclick="selectOption('equipmentPackage', 'Salt', 2)">
-            <img src="aop_uv.jpg" alt="AOP & UV" onclick="selectOption('equipmentPackage', 'AOP & UV', 2)">
-            <img src="spa_jet.jpg" alt="Spa Jet" onclick="selectOption('equipmentPackage', 'Spa Jet', 2)">
-            <img src="salt_spa.jpg" alt="Salt with Spa Jet" onclick="selectOption('equipmentPackage', 'Salt with Spa Jet', 2)">
-            <img src="aop_uv_spa.jpg" alt="AOP & UV with Spa Jet" onclick="selectOption('equipmentPackage', 'AOP & UV with Spa Jet', 2)">
+        <div class="options">
+            <div class="option" onclick="selectOption('equipmentPackage', 'Smart', 2)">Smart</div>
+            <div class="option" onclick="selectOption('equipmentPackage', 'Salt', 2)">Salt</div>
+            <div class="option" onclick="selectOption('equipmentPackage', 'AOP & UV', 2)">AOP & UV</div>
+            <div class="option" onclick="selectOption('equipmentPackage', 'Spa Jet', 2)">Spa Jet</div>
+            <div class="option" onclick="selectOption('equipmentPackage', 'Salt with Spa Jet', 2)">Salt with Spa Jet</div>
+            <div class="option" onclick="selectOption('equipmentPackage', 'AOP & UV with Spa Jet', 2)">AOP & UV with Spa Jet</div>
         </div>
-        <button onclick="prevStep(2)">Back</button>
-        <button onclick="nextStep(2)">Next</button>
+        <div class="buttons">
+            <button onclick="prevStep(2)">Back</button>
+            <button onclick="nextStep(2)">Next</button>
+        </div>
     </div>
 
     <div id="step3" class="step">
         <h2>Step 3: Select Heating System</h2>
-        <div>
-            <img src="no_heating.jpg" alt="No Heating" onclick="selectOption('heatingSystem', 'No Heating', 3)">
-            <img src="heating.jpg" alt="Heating System" onclick="selectOption('heatingSystem', 'Heating System', 3)">
+        <div class="options">
+            <div class="option" onclick="selectOption('heatingSystem', 'No Heating', 3)">No Heating</div>
+            <div class="option" onclick="selectOption('heatingSystem', 'Heating System', 3)">Heating System</div>
         </div>
-        <button onclick="prevStep(3)">Back</button>
-        <button onclick="nextStep(3)">Next</button>
+        <div class="buttons">
+            <button onclick="prevStep(3)">Back</button>
+            <button onclick="nextStep(3)">Next</button>
+        </div>
     </div>
 
     <div id="step4" class="step">
         <h2>Step 4: Select Chiller</h2>
-        <div>
-            <img src="no_chiller.jpg" alt="No Chiller" onclick="selectOption('chiller', 'No Chiller', 4)">
-            <img src="chiller.jpg" alt="Chiller" onclick="selectOption('chiller', 'Chiller', 4)">
+        <div class="options">
+            <div class="option" onclick="selectOption('chiller', 'No Chiller', 4)">No Chiller</div>
+            <div class="option" onclick="selectOption('chiller', 'Chiller', 4)">Chiller</div>
         </div>
-        <button onclick="prevStep(4)">Back</button>
-        <button onclick="nextStep(4)">Next</button>
+        <div class="buttons">
+            <button onclick="prevStep(4)">Back</button>
+            <button onclick="nextStep(4)">Next</button>
+        </div>
     </div>
 
     <div id="step5" class="step">
         <h2>Step 5: Select Installation Height</h2>
-        <div>
-            <img src="above_ground.jpg" alt="Above Ground" onclick="selectOption('installationHeight', 'Above Ground', 5)">
-            <img src="semi_recessed.jpg" alt="Semi Recessed" onclick="selectOption('installationHeight', 'Semi Recessed', 5)">
-            <img src="in_ground.jpg" alt="In-Ground" onclick="selectOption('installationHeight', 'In-Ground', 5)">
+        <div class="options">
+            <div class="option" onclick="selectOption('installationHeight', 'Above Ground', 5)">Above Ground</div>
+            <div class="option" onclick="selectOption('installationHeight', 'Semi Recessed', 5)">Semi Recessed</div>
+            <div class="option" onclick="selectOption('installationHeight', 'In-Ground', 5)">In-Ground</div>
         </div>
-        <button onclick="prevStep(5)">Back</button>
-        <button onclick="nextStep(5)">Next</button>
+        <div class="buttons">
+            <button onclick="prevStep(5)">Back</button>
+            <button onclick="nextStep(5)">Next</button>
+        </div>
     </div>
 
     <div id="step6" class="step">
         <h2>Step 6: Select Crane Access</h2>
-        <div>
-            <img src="clear_access.jpg" alt="Clear Access" onclick="selectOption('craneAccess', 'Clear Access', 6)">
-            <img src="single_story.jpg" alt="Single Story" onclick="selectOption('craneAccess', 'Single Story', 6)">
-            <img src="multi_story.jpg" alt="Multi Story" onclick="selectOption('craneAccess', 'Multi Story', 6)">
+        <div class="options">
+            <div class="option" onclick="selectOption('craneAccess', 'Clear Access', 6)">Clear Access</div>
+            <div class="option" onclick="selectOption('craneAccess', 'Single Story', 6)">Single Story</div>
+            <div class="option" onclick="selectOption('craneAccess', 'Multi Story', 6)">Multi Story</div>
         </div>
-        <button onclick="prevStep(6)">Back</button>
-        <button onclick="calculateQuote()">Get Quote</button>
+        <div class="buttons">
+            <button onclick="prevStep(6)">Back</button>
+            <button onclick="calculateQuote()">Get Quote</button>
+        </div>
     </div>
 
     <h2 id="quoteResult"></h2>
@@ -160,9 +180,9 @@
 
         function selectOption(type, value, step) {
             selections[type] = value;
-            const images = document.querySelectorAll(`#step${step} img`);
-            images.forEach(img => {
-                img.classList.remove('selected');
+            const options = document.querySelectorAll(`#step${step} .option`);
+            options.forEach(option => {
+                option.classList.remove('selected');
             });
             event.target.classList.add('selected');
         }
@@ -192,6 +212,7 @@
             document.getElementById('quoteResult').innerText = `Estimated Cost Range: $${lowerRange.toLocaleString()} - $${upperRange.toLocaleString()}`;
             document.getElementById('startOver').style.display = 'block';
         }
+
 
         function startOver() {
             selections = {};
