@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pool Quote Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        form {
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #quoteResult {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Get Your Pool Quote</h1>
+    <form id="quoteForm">
+        <label for="poolModel">Pool Model:</label>
+        <select id="poolModel" name="poolModel">
+            <option value="Arena">Arena</option>
+            <option value="Studio">Studio</option>
+            <option value="Original">Original</option>
+            <option value="Max">Max</option>
+        </select>
+
+        <label for="equipmentPackage">Equipment Package:</label>
+        <select id="equipmentPackage" name="equipmentPackage">
+            <option value="Smart">Smart</option>
+            <option value="Salt">Salt</option>
+            <option value="AOP & UV">AOP & UV</option>
+            <option value="Spa Jet">Spa Jet</option>
+            <option value="Salt with Spa Jet">Salt with Spa Jet</option>
+            <option value="AOP & UV with Spa Jet">AOP & UV with Spa Jet</option>
+        </select>
+
+        <label for="heatingSystem">Heating System:</label>
+        <select id="heatingSystem" name="heatingSystem">
+            <option value="No Heating">No Heating</option>
+            <option value="Heating System">Heating System</option>
+        </select>
+
+        <label for="chiller">Chiller:</label>
+        <select id="chiller" name="chiller">
+            <option value="No Chiller">No Chiller</option>
+            <option value="Chiller">Chiller</option>
+        </select>
+
+        <label for="installationHeight">Installation Height:</label>
+        <select id="installationHeight" name="installationHeight">
+            <option value="Above Ground">Above Ground</option>
+            <option value="Semi Recessed">Semi Recessed</option>
+            <option value="In-Ground">In-Ground</option>
+        </select>
+
+        <label for="craneAccess">Crane Access:</label>
+        <select id="craneAccess" name="craneAccess">
+            <option value="Clear Access">Clear Access</option>
+            <option value="Single Story">Single Story</option>
+            <option value="Multi Story">Multi Story</option>
+        </select>
+
+        <button type="button" onclick="calculateQuote()">Get Quote</button>
+    </form>
+
+    <h2 id="quoteResult"></h2>
+
+    <script>
+        const poolModelCosts = {
+            'Arena': 25500,
+            'Studio': 21500,
+            'Original': 25500,
+            'Max': 29990
+        };
+
+        const equipmentPackageCosts = {
+            'Smart': 5195,
+            'Salt': 6595,
+            'AOP & UV': 7995,
+            'Spa Jet': 9295,
+            'Salt with Spa Jet': 11195,
+            'AOP & UV with Spa Jet': 12595
+        };
+
+        const heatingSystemCosts = {
+            'No Heating': 0,
+            'Heating System': 5495
+        };
+
+        const chillerCosts = {
+            'No Chiller': 0,
+            'Chiller': 6995
+        };
+
+        const installationHeightCosts = {
+            'Above Ground': 9500,
+            'Semi Recessed': 11000,
+            'In-Ground': 13000
+        };
+
+        const craneAccessCosts = {
+            'Clear Access': 6000,
+            'Single Story': 10000,
+            'Multi Story': 14000
+        };
+
+        const installationAndHookupCost = 7000;
+
+        function calculateQuote() {
+            const poolModel = document.getElementById('poolModel').value;
+            const equipmentPackage = document.getElementById('equipmentPackage').value;
+            const heatingSystem = document.getElementById('heatingSystem').value;
+            const chiller = document.getElementById('chiller').value;
+            const installationHeight = document.getElementById('installationHeight').value;
+            const craneAccess = document.getElementById('craneAccess').value;
+
+            const totalCost = poolModelCosts[poolModel] +
+                equipmentPackageCosts[equipmentPackage] +
+                heatingSystemCosts[heatingSystem] +
+                chillerCosts[chiller] +
+                installationHeightCosts[installationHeight] +
+                craneAccessCosts[craneAccess] +
+                installationAndHookupCost;
+
+            document.getElementById('quoteResult').innerText = `Total Cost: $${totalCost}`;
+        }
+    </script>
+</body>
+</html>
