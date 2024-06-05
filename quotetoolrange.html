@@ -152,7 +152,7 @@
             const lowerRange = Math.floor(totalCost / 5000) * 5000;
             const upperRange = Math.ceil(totalCost / 5000) * 5000 + 5000;
 
-            document.getElementById('quoteResult').innerText = `Estimated Cost Range: $${lowerRange.toLocaleString()} - $${upperRange.toLocaleString()}`;
+            document.getElementById('quoteResult').innerText = `Total Cost: $${totalCost.toLocaleString()} \n Estimated Cost Range: $${lowerRange.toLocaleString()} - $${upperRange.toLocaleString()}`;
         }
     </script>
 </body>
