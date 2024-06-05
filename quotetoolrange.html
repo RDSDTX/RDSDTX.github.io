@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Damian's GitHub</title>
+    <title>Ramal's Github</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -41,7 +41,7 @@
     </style>
 </head>
 <body>
-    <h1>Estimator Tool</h1>
+    <h1>Pool Cost Estimator</h1>
     <form id="quoteForm">
         <label for="poolModel">Pool Model:</label>
         <select id="poolModel" name="poolModel">
@@ -120,15 +120,49 @@
         };
 
         const installationHeightCosts = {
-            'Above Ground': 9500,
-            'Semi Recessed': 11000,
-            'In-Ground': 13000
+            'Max': {
+                'Above Ground': 10000,
+                'Semi Recessed': 12000,
+                'In-Ground': 14500
+            },
+            'Original': {
+                'Above Ground': 9000,
+                'Semi Recessed': 11000,
+                'In-Ground': 13000
+            },
+            'Arena': {
+                'Above Ground': 9000,
+                'Semi Recessed': 11000,
+                'In-Ground': 13000
+            },
+            'Studio': {
+                'Above Ground': 9000,
+                'Semi Recessed': 10000,
+                'In-Ground': 12000
+            }
         };
 
         const craneAccessCosts = {
-            'Clear Access': 6000,
-            'Single Story': 10000,
-            'Multi Story': 14000
+            'Max': {
+                'Clear Access': 8000,
+                'Single Story': 12000,
+                'Multi Story': 15000
+            },
+            'Original': {
+                'Clear Access': 6000,
+                'Single Story': 10000,
+                'Multi Story': 14000
+            },
+            'Arena': {
+                'Clear Access': 6000,
+                'Single Story': 10000,
+                'Multi Story': 14000
+            },
+            'Studio': {
+                'Clear Access': 5000,
+                'Single Story': 8000,
+                'Multi Story': 12000
+            }
         };
 
         const installationAndHookupCost = 7000;
@@ -145,15 +179,16 @@
                 equipmentPackageCosts[equipmentPackage] +
                 heatingSystemCosts[heatingSystem] +
                 chillerCosts[chiller] +
-                installationHeightCosts[installationHeight] +
-                craneAccessCosts[craneAccess] +
+                installationHeightCosts[poolModel][installationHeight] +
+                craneAccessCosts[poolModel][craneAccess] +
                 installationAndHookupCost;
 
             const lowerRange = Math.floor(totalCost / 5000) * 5000;
-            const upperRange = Math.ceil(totalCost / 5000) * 5000 + 5000;
+            const upperRange = lowerRange + 5000;
 
             document.getElementById('quoteResult').innerText = `Total Cost: $${totalCost.toLocaleString()} \n Estimated Cost Range: $${lowerRange.toLocaleString()} - $${upperRange.toLocaleString()}`;
         }
     </script>
 </body>
 </html>
+
