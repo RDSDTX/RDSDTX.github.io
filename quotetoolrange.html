@@ -149,7 +149,7 @@
                 craneAccessCosts[craneAccess] +
                 installationAndHookupCost;
 
-            const lowerRange = Math.floor(totalCost / 10000) * 10000;
+            const lowerRange = Math.floor(totalCost / 5000) * 5000;
             const upperRange = lowerRange + 5000;
 
             document.getElementById('quoteResult').innerText = `Estimated Cost Range: $${lowerRange} - $${upperRange}`;
