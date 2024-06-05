@@ -38,10 +38,14 @@
             font-weight: bold;
             color: #333;
         }
+        .calculation-detail {
+            font-size: 14px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
-    <h1>Pool Cost Estimator</h1>
+    <h1>Pool Estimator</h1>
     <form id="quoteForm">
         <label for="poolModel">Pool Model:</label>
         <select id="poolModel" name="poolModel">
@@ -91,6 +95,7 @@
     </form>
 
     <h2 id="quoteResult"></h2>
+    <div id="calculationDetail" class="calculation-detail"></div>
 
     <script>
         const poolModelCosts = {
@@ -175,20 +180,29 @@
             const installationHeight = document.getElementById('installationHeight').value;
             const craneAccess = document.getElementById('craneAccess').value;
 
-            const totalCost = poolModelCosts[poolModel] +
-                equipmentPackageCosts[equipmentPackage] +
-                heatingSystemCosts[heatingSystem] +
-                chillerCosts[chiller] +
-                installationHeightCosts[poolModel][installationHeight] +
-                craneAccessCosts[poolModel][craneAccess] +
+            const poolModelCost = poolModelCosts[poolModel];
+            const equipmentPackageCost = equipmentPackageCosts[equipmentPackage];
+            const heatingSystemCost = heatingSystemCosts[heatingSystem];
+            const chillerCost = chillerCosts[chiller];
+            const installationHeightCost = installationHeightCosts[poolModel][installationHeight];
+            const craneAccessCost = craneAccessCosts[poolModel][craneAccess];
+
+            const totalCost = poolModelCost +
+                equipmentPackageCost +
+                heatingSystemCost +
+                chillerCost +
+                installationHeightCost +
+                craneAccessCost +
                 installationAndHookupCost;
 
             const lowerRange = Math.floor(totalCost / 5000) * 5000;
             const upperRange = lowerRange + 5000;
 
             document.getElementById('quoteResult').innerText = `Total Cost: $${totalCost.toLocaleString()} \n Estimated Cost Range: $${lowerRange.toLocaleString()} - $${upperRange.toLocaleString()}`;
+            document.getElementById('calculationDetail').innerText = `Calculation: Pool Model: $${poolModelCost.toLocaleString()} + Equipment Package: $${equipmentPackageCost.toLocaleString()} + Heating System: $${heatingSystemCost.toLocaleString()} + Chiller: $${chillerCost.toLocaleString()} + Installation Height: $${installationHeightCost.toLocaleString()} + Crane Access: $${craneAccessCost.toLocaleString()} + Installation and Hookup: $${installationAndHookupCost.toLocaleString()}`;
         }
     </script>
 </body>
 </html>
+
 
